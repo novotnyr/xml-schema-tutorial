@@ -3,7 +3,7 @@
     <param name="xetex.font">
         <text>\setmainfont{Lato}</text>
         <text>\setsansfont{Montserrat}</text>
-        <text>\setmonofont{Roboto Mono}</text>
+        <text>\setmonofont[Scale=0.95]{Roboto Mono}</text>
     </param>
     <param name="latex.class.options">9pt</param>
     <param name="paper.type">b5paper</param>
