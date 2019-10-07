@@ -1,0 +1,10 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar">
+    <element name="calendar">
+        <complexType>
+            <sequence>
+                <element name="event" maxOccurs="unbounded" type="string" />
+            </sequence>
+        </complexType>
+    </element>
+</schema>

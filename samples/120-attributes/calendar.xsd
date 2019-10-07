@@ -1,0 +1,33 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar"
+        elementFormDefault="qualified"
+        xmlns:cal="urn:example:calendar"> <!--3-->
+
+    <complexType name="Event">  <!--1-->
+        <sequence>
+            <element name="date" type="dateTime" />
+            <element name="description" type="string" />
+            <element name="participants" minOccurs="0">
+                <complexType>
+                    <sequence>
+                        <element name="participant" type="string" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+        </sequence>
+    </complexType>
+
+    <element name="calendar">
+        <complexType>
+            <sequence>
+                <!--2-->
+                <element name="event" type="cal:Event"
+                         minOccurs="0"
+                         maxOccurs="unbounded" />
+            </sequence>
+            <attribute name="app" type="string" use="required"/> <!--1-->
+        </complexType>
+    </element>
+
+    <element name="event" type="cal:Event" />  <!--4-->
+</schema>

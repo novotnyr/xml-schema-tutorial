@@ -1,0 +1,5 @@
+<cal:calendar xmlns:cal="urn:example:calendar">
+    <event>Conference Intro at 17:00</event>
+    <event>On XML Schemas at 20:00</event>
+    <event>Conference outro</event>
+</cal:calendar>

@@ -1,0 +1,16 @@
+<cal:calendar xmlns:cal="urn:example:calendar"
+              xsi:schemaLocation="urn:example:calendar calendar.xsd"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <cal:event>
+        <cal:date>2019-05-30T09:00:00</cal:date>
+        <cal:description>Welcome Drink</cal:description>
+        <cal:participants> <!--1-->
+            <cal:participant>John Doe</cal:participant> <!--2-->
+            <cal:participant>Jane Doe</cal:participant> <!--2-->
+        </cal:participants>
+    </cal:event>
+    <cal:event>
+        <cal:date>2019-05-30T10:00:00</cal:date>
+        <cal:description>Conference</cal:description> <!--3-->
+    </cal:event>
+</cal:calendar>

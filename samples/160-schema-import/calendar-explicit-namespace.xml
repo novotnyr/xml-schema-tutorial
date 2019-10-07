@@ -1,0 +1,10 @@
+<cal:calendar xmlns:cal="urn:example:calendar"
+              xmlns:e="urn:example:event"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="urn:example:calendar calendar.xsd">
+
+    <e:event>
+        <e:date>2019-05-30T09:00:00</e:date>
+        <e:description>Test</e:description>
+    </e:event>
+</cal:calendar>

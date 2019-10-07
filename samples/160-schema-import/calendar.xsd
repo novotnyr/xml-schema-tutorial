@@ -1,0 +1,15 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar"
+        xmlns:e="urn:example:event"
+        elementFormDefault="qualified">
+
+    <import namespace="urn:example:event" schemaLocation="event.xsd" />
+
+    <element name="calendar">
+        <complexType>
+            <sequence>
+                <element ref="e:event" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

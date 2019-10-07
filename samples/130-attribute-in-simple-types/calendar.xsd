@@ -1,0 +1,11 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:example:calendar">
+    <element name="calendar">
+        <complexType>
+            <simpleContent> <!--1-->
+                <extension base="string"> <!--2-->
+                    <attribute name="app" type="string" use="required"/> <!--3-->
+                </extension>
+            </simpleContent>
+        </complexType>
+    </element>
+</schema>

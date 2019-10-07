@@ -1,0 +1,16 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:example:calendar" elementFormDefault="qualified"> <!--1-->
+    <element name="calendar">
+        <complexType>
+            <sequence>
+                <element name="event" minOccurs="0" maxOccurs="unbounded"> <!--2-->
+                    <complexType>
+                        <sequence>
+                            <element name="date" type="dateTime" /> <!--3-->
+                            <element name="description" type="string" /> <!--4-->
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

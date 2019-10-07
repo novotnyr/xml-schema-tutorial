@@ -1,0 +1,27 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar"
+        elementFormDefault="qualified">
+    <element name="calendar">
+        <complexType>
+            <sequence>
+                <element name="event" minOccurs="0" maxOccurs="unbounded">
+                    <complexType>
+                        <sequence>
+                            <element name="date" type="dateTime" />
+                            <element name="description" type="string" />
+                            <element name="participants" minOccurs="0"> <!--1-->
+                                <complexType>
+                                    <sequence>
+                                        <element name="participant"
+                                                 type="string"
+                                                 maxOccurs="unbounded" /> <!--2-->
+                                    </sequence>
+                                </complexType>
+                            </element>
+                        </sequence>
+                    </complexType>
+                </element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

@@ -1,0 +1,8 @@
+<event xmlns="urn:example:calendar">
+    <date>2019-05-30T09:00:00</date>
+    <description>Welcome Drink</description>
+    <participants>
+        <participant>John Doe</participant>
+        <participant>Jane Doe</participant>
+    </participants>
+</event>

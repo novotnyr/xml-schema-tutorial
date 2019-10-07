@@ -1,0 +1,13 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:event"
+        xmlns:e="urn:example:event"
+        elementFormDefault="qualified" >
+
+    <complexType name="Event">
+        <sequence>
+            <element name="date" type="dateTime" />
+            <element name="description" type="string" />
+        </sequence>
+    </complexType>
+    <element name="event" type="e:Event" />
+</schema>

@@ -1,0 +1,11 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar"
+        elementFormDefault="qualified"> <!--5-->
+    <element name="calendar"> <!--1-->
+        <complexType> <!--2-->
+            <sequence> <!--3-->
+                <element name="event" maxOccurs="unbounded" type="string" /> <!--4-->
+            </sequence>
+        </complexType>
+    </element>
+</schema>

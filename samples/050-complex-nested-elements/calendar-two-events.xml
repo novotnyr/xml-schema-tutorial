@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<calendar xmlns="urn:example:calendar">
+    <event>
+        <date>2019-05-30T09:00:00</date>
+        <description>Welcome Drink</description>
+    </event>
+    <event>
+        <date>2019-05-30T10:00:00</date>
+        <description>Conference</description>
+    </event>
+</calendar>

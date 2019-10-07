@@ -1,0 +1,20 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="urn:example:calendar"
+        xmlns:cal="urn:example:calendar">
+
+    <simpleType name="CalendarSummary"> <!--1-->
+        <restriction base="string"> <!--2-->
+            <pattern value="\d+ event(s)?" /> <!--3-->
+        </restriction>
+    </simpleType>
+
+    <element name="calendarSummary">
+        <complexType>
+            <simpleContent> <!--3-->
+                <extension base="cal:CalendarSummary"> <!--4-->
+                    <attribute name="app" type="string" use="required"/>
+                </extension>
+            </simpleContent>
+        </complexType>
+    </element>
+</schema>
