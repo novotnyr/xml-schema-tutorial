@@ -39,8 +39,9 @@ Minimalistická schéma, ba priam jej kostra, vyzerajú nasledovne:
 ----
 
 * Schéma má koreňový element `<schema>`.
-* Všetky elementy jazyka XML schémy patria do menného priestoru `http://www.w3.org/2001/XMLSchema`.
-* Atribút `targetNamespace` hovorí, do ktorého menného priestoru budú patriť elementy dokumentu popisovaného schémou.
+* Atribút `xmlns` udáva implicitný menný priestor pre elementy.
+Keďže tento dokument popisuje XML schému, jeho elementy budú patriť do menného priestoru špecifikácie _XML Schema_, ktorým je `http://www.w3.org/2001/XMLSchema`.
+* Atribút `targetNamespace` (_cieľový menný priestor_) hovorí, do ktorého menného priestoru budú patriť elementy dokumentu popisovaného schémou.
 
 === Varianty minimalistickej schémy
 
@@ -61,14 +62,13 @@ Predstavme si jednoduchý bežný document:
 
 [source,xml]
 ----
-<calendar xmlns="urn:example:calendar">
-    3 events
+<calendar xmlns="urn:example:calendar"> <!--1-->
+    3 events <!--2-->
 </calendar>
 ----
-
-Dokument má jediný (koreňový) element `<calendar>`, ktorého obsahom je reťazec.
-
-Element navyše patrí do menného priestoru (_namespace_) `urn:example:calendar`.
+<1> Dokument má jediný (koreňový) element `<calendar>`, ktorý patrí do menného
+priestoru (_namespace_) `urn:example:calendar`.
+<2> Obsahom elementu je text (reťazec, _string_).
 
 Schéma, ktorá popisuje uvedený dokument, vyzerá nasledovne:
 
@@ -556,7 +556,19 @@ Každá inštancia dokumentu môže mať implicitne priradenú schému, oproti k
 Koreňovému elementu môžeme priradiť atribút `schemaLocation`. Jeho hodnota pozostáva z dvojíc oddelených medzerami, napr. `urn:example:calendar calendar.xsd`
 
 * prvá časť dvojice reprezentuje *menný priestor*, ku ktorému priradíme XML schému
-* druhá časť dvojice predstavuje adresu *URL*, na ktorej sa nachádza XML schéma k predošlému mennému priestoru. Adresa môže byť absolútna, napríklad `https://www.w3.org/2009/XMLSchema/XMLSchema.xsd` alebo relatívna vzhľadom k inštancii XML dokumentu. V príklade máme relatívnu adresu, kde sa očakáva, že schéma je v rovnakom "adresári" ako samotná inštancia. Validátor pristúpi, či stiahne schému dostupnú na danej adrese a použije ju pri validácii.
+* druhá časť dvojice predstavuje adresu *URL*, na ktorej sa nachádza XML schéma k predošlému mennému priestoru.
+
+=== Lokácie XML schém dokumentu
+
+Lokácia XML schémy je adresa URL, ktorá musí byť dohľadateľná a stiahnuteľná validátorom.
+Validátor získa súbor schémy z danej adresy a použije ju pri validácii inštancie XML.
+
+Adresa musí byť:
+
+* *absolútna*, napr. `https://www.w3.org/2009/XMLSchema/XMLSchema.xsd`
+* *relatívna*, kde sa očakáva, že cesta k schéme je uvedená vzhľadom k lokácii inštancie. V príklade čakáme, že schéma `calendar.xsd` je v rovnakom „adresári“ ako dokument XML.
+
+=== Atribút `schemaLocation`
 
 Samotný atribút `schemaLocation` je plne kvalifikovaný a patrí do menného priestoru `http://www.w3.org/2001/XMLSchema-instance`. Ak ho chceme použiť v dokumente, musíme sa naňho odkázať cez prefix menného priestoru, ktorý je podľa konvencie `xsi`. To je dôvod, prečo musíme deklarovať mapovanie medzi prefixom a menným priestorom:
 ```
@@ -868,7 +880,7 @@ Vytvorme teraz druhú schému pre kalendár:
     </element>
 </schema>
 ----
-<1> Schéma pre kalendár `schema.xsd` deklaruje elementy do cieľového menného priestoru `urn:example:calendar`. Zároveň deklarujeme mapovanie prefixu `e` na menný priestor udalostí z importovanej schémy.
+<1> Schéma pre kalendár `calendar.xsd` deklaruje elementy do cieľového menného priestoru `urn:example:calendar`. Zároveň deklarujeme mapovanie prefixu `e` na menný priestor udalostí z importovanej schémy.
 <2> Schému pre udalosti `event.xsd` zavedieme do aktuálnej schémy. Keďže menný priestor tejto externej schémy je odlišný od cieľového menného priestoru aktuálnej schémy, použijeme `<import>`. Uvedieme adresu schémy (`schemaLocation`) a menný priestor, do ktorého importneme jej prvky.
 <3> Elementy kalendára znovupoužijeme zo schémy. Použijeme _referenciu_ na globálny element `event` zo schémy pre udalosti. Odkaz samozrejme uvedieme v kvalifikovanom tvare, s použitím prefixu `e`.
 
@@ -878,9 +890,9 @@ Pozrime sa teraz na vzhľad inštancií:
 [source,xml]
 ----
 <calendar xmlns="urn:example:calendar"
-          xmlns:e="urn:example:event"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="urn:example:calendar calendar.xsd"><!--1-->
+    xmlns:e="urn:example:event"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:example:calendar calendar.xsd"><!--1-->
 
     <e:event> <!--2-->
         <e:date>2019-05-30T09:00:00</e:date>
@@ -888,7 +900,7 @@ Pozrime sa teraz na vzhľad inštancií:
     </e:event>
 </calendar>
 ----
-<1> Kalendár má koreňový element s celým kvalifikovaným menom `{urn:example:calendar}calendar}`. Validácia sa bude riadiť schémou `schema.xsd`.
+<1> Kalendár má koreňový element `<calendar>` s celým kvalifikovaným menom `{urn:example:calendar}calendar`. Validácia sa bude riadiť schémou `calendar.xsd`.
 <2> Vnorené elementy však patria do "externej schémy" pre udalosti, ktorá má odlišný menný priestor. Keďže podľa schémy `event.xsd` patrí element `<event>` do menného priestoru `urn:example:event`, musíme ho uviesť s korektným prefixom (v našom príklade `e`). Nezabudnime na to, že import zlučuje elementy z dvoch odlišných menných priestorov, čo je dôvod, prečo sa prefixy líšia.
 
 [NOTE]
