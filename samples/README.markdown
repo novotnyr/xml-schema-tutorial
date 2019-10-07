@@ -1,0 +1,1 @@
+Zdrojové kódy príkladov. V každom adresári sa nachádza samostatný README s popisom príkladu a významom súborov.
