@@ -153,7 +153,7 @@ Všetky elementy našej inštancie patria do menného priestoru `urn:example:cal
 Kvalifikovaný názov pre elementy z našej inštancie:
 
 * `{urn:example:calendar}calendar` pre koreňový element,
-*  `{urn:example:calendar}event` pre udalosťové elementy.
+* `{urn:example:calendar}event` pre udalosťové elementy.
 ====
 
 Naša inštancia je ekvivalentná explicitnej verzii, kde každý element vyfasuje explicitný prefix.
@@ -672,7 +672,7 @@ Schéma, ktorá popisuje uvedený jednoduchý dokument, musí zadeklarovať `<ca
 <2> Element následne použijeme ako rozšírenie (*extension*) existujúceho jednoduchého typu -- v našom prípade reťazca -- ktorému dodáme ďalšie atribúty.
 <3> Elementu `<calendar>` dodáme povinný (_required_) reťazcový (_string_) atribút s názvom `app`.
 
-NOTE: Rozšírenie (*extension*) plní v XML schéme podobnú funkciu ako dedičnosť v objektovo orientovanom programovaní. Typ, ktorý rozširujeme ("od ktorého dedíme") predstavuje akúsi šablónu, ktorú obohatíme o nové atribúty, či podelementy.
+NOTE: Rozšírenie (*extension*) plní v XML schéme podobnú funkciu ako dedičnosť v objektovo orientovanom programovaní. Typ, ktorý rozširujeme („od ktorého dedíme“) predstavuje akúsi šablónu, ktorú obohatíme o nové atribúty, či podelementy.
 
 ==== Jednoduché typy s atribútmi a facetmi: použitie reštrikcie a extenzie pre jeden element
 
@@ -707,7 +707,7 @@ V taktom prípade použijeme trik:
 </schema>
 ----
 <1> Deklarujeme vlastný dátový typ `CalendarSummary` reprezentujúci element s jednoduchým textovým obsahom.
-<2> Obsah elementu vytvoríme reštrikciou typu reťazec
+<2> Obsah elementu vytvoríme reštrikciou typu reťazec.
 <3> Fazetou reštrikcie bude regulárny výraz.
 <4> Sumár kalendára (koreňový element) definujeme ako komplexný typ s jednoduchým obsahom, ktorý založíme na dátovom type `CalendarSummary`. Extenziou nášho vlastného dátového typu získame element s formátom vyhovujúcim regulárnemu výrazu, ktorému vieme pridať dodatočné atribúty.
 
@@ -764,14 +764,14 @@ Takýto dokument s jedným elementom podporuje i atribút `app`, i predpis na ob
 
 == Práca s externými schémami
 
-_*XML Schema*_ podporuje dva spôsoby práce s externými schémami:
+_XML Schema_ podporuje dva spôsoby práce s externými schémami:
 
-* *include*, kde vieme do existujúcej schémy "vložiť" definície z inej schémy, ale rovnakého menného priestoru tak, ako keby boli v nej uvedené priamo.
+* *include*, kde vieme do existujúcej schémy „vložiť“ definície z inej schémy, ale rovnakého menného priestoru tak, ako keby boli v nej uvedené priamo.
 * *import*, kde vieme do existujúcej schémy dotiahnuť definície z inej schémy a iného menného priestoru.
 
 === Inklúzia externých schém
 
-Inklúzia schémy "skopíruje" obsah externej schémy do aktuálnej schémy. Inklúdovať môžeme len elementy z rovnakého menného priestoru ako má cieľový menný priestor (_target namespace_) aktuálnej schémy.
+Inklúzia schémy „skopíruje“ obsah externej schémy do aktuálnej schémy. Inklúdovať môžeme len elementy z rovnakého menného priestoru ako má cieľový menný priestor (_target namespace_) aktuálnej schémy.
 
 Predstavme si základnú schému pre udalosti:
 
